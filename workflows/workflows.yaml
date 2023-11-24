@@ -1,0 +1,18 @@
+name: 'Upload Event Schema to Event Catalog'
+description: 'Upload Event Schema from an OpenAPI spec'
+inputs:
+  spec-path:
+    description: 'Location of the OpenAPI spec file'
+    required: true
+  id-path:
+    description: 'Json path to the key with which to identify the subscribers'
+    required: true
+  feature-flag:
+    description: 'Feature flag if event should only be available for select users'
+
+runs:
+  using: "composite"
+  steps:
+    - name Validate Inputs
+      run: |
+        ./scripts/event-catalog/validate-inputs.sh  
