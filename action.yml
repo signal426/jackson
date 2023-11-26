@@ -16,5 +16,7 @@ runs:
     - name: Validate Inputs
       shell: bash
       run: |
-        chmod +x ./scripts/validate.sh
-        ./scripts/validate.sh
+        if [ ! -f ${{inputs.spec-path}} ]; then
+          echo "OPEN API MISSING"
+          exit 1
+        fi
